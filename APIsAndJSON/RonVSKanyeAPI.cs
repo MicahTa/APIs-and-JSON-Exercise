@@ -1,5 +1,6 @@
 ﻿
 using System.Text.Json.Nodes;
+using System.Text.RegularExpressions;
 
 namespace APIsAndJSON
 {
@@ -13,7 +14,7 @@ namespace APIsAndJSON
 
             var kanyeQuote = JsonObject.Parse(kanyeResponse)["quote"].ToString();
 
-            return $"\"{kanyeQuote}\"";
+            return $"\"{Regex.Unescape(kanyeQuote)}\"";
         }
 
         public static string GetRonQuote()
@@ -24,7 +25,7 @@ namespace APIsAndJSON
             var ronResponse = client.GetStringAsync(ron).Result;
             var ronQuote = JsonArray.Parse(ronResponse).ToString().Replace('[', ' ').Replace(']', ' ').Trim();
 
-            return ronQuote;
+            return Regex.Unescape(ronQuote);
         }
     }
 }
