@@ -14,6 +14,19 @@ namespace APIsAndJSON
                 Console.WriteLine($"Ron: {RonVSKanyeAPI.GetRonQuote()}");
                 Console.WriteLine($"Kanye {RonVSKanyeAPI.GetKanyeQuote()}");
             }
+
+            Console.Write("\n\n\n\nWeather Finder");
+            while (true) {
+                Console.Write("What town are you in: ");
+                string town = Console.ReadLine();
+                Console.Write("What state are you in: ");
+                string state = Console.ReadLine();
+                Console.Write("What country are you in: ");
+                string country = Console.ReadLine();
+
+                string data = WeatherAPI.GetWeather(town, state, country, "af2f5d956d16e9da94e2a6ab051db5bf");
+                Console.WriteLine(data);
+            }
         }
     }
 }
